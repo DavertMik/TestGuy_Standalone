@@ -16,13 +16,15 @@ class TestGuy_Module_Filesystem extends TestGuy_Module {
         PHPUnit_Framework_Assert::assertNotContains($text, $this->file,"text $text in currently opened file");
     }
     
-    public function findFile($filename, $path = null) {
-        if (!$path) $path = getcwd();
+    public function findFile($filename, $path = '') {
+        $path = getcwd().'/'.$path;
+        $this->debug($path);
+
         $files = \Symfony\Component\Finder\Finder::create()->files()->name($filename)->in($path);
         foreach ($files as $file) {
             return $this->openFile($file);
         }
-        PHPUnit_Framework_Assert::fail("file $filename in $path");
+        PHPUnit_Framework_Assert::fail("$filename in $path");
     }
     
 }

@@ -112,15 +112,22 @@ class TestGuy_TestCase extends PHPUnit_Framework_TestCase implements PHPUnit_Fra
 	    }
 
 	    $module = TestGuy_Manager::$modules[TestGuy_Manager::$methods[$action]];
-	    if (is_callable(array($module, $action))) {
-		    call_user_func_array(array($module, $action), $arguments);
-			$output = $module->_getDebugOutput();
-	    }
+
+        try {
+            if (is_callable(array($module, $action))) {
+                call_user_func_array(array($module, $action), $arguments);
+
+            }
+        } catch (PHPUnit_Framework_ExpectationFailedException $fail) {
+            if ($module->_getDebugOutput() && $this->debug) $this->output->debug($module->_getDebugOutput());
+            throw $fail;
+        }
 
 	    foreach (TestGuy_Manager::$modules as $module) {
 	        $module->_afterStep($step);
 	    }
-	    
+
+        $output = $module->_getDebugOutput();
 	    if ($output && $this->debug) $this->output->debug($output);
     }
 	
