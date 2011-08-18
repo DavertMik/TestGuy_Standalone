@@ -1,10 +1,10 @@
 <?php
 
-class TeseGuy_Module_Cli extends TestGuy_Module
+class TestGuy_Module_Cli extends TestGuy_Module
 {
     protected $output = '';
 
-    protected function _cleanup()
+    public function _cleanup()
     {
         $this->output = '';
     }
@@ -13,16 +13,18 @@ class TeseGuy_Module_Cli extends TestGuy_Module
         chdir($dir);
     }
 
-    public function execute($command, $params = null) {
-        if (is_array($params)) $params = implode(' ',$params);
-        $this->output = shell_exec("$command $params");
+    public function execute($command) {
+        $this->output = shell_exec("$command");
+        $this->debug($this->output);
     }
 
     public function seeInOutput($text) {
+
         PHPUnit_Framework_Assert::assertContains($text, $this->output);
     }
 
     public function dontSeeInOutput($text) {
+        $this->debug($this->output);
         PHPUnit_Framework_Assert::assertNotContains($text, $this->output);
     }
 

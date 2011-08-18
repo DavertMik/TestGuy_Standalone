@@ -1,3 +1,12 @@
 [submodule "vendor\\Symfony\\Component\\Console"]
 	path = vendor\\Symfony\\Component\\Console
 	url = https://github.com/symfony/Console.git
+[submodule "vendor\\Symfony\\Component\\Yaml"]
+	path = vendor\\Symfony\\Component\\Yaml
+	url = https://github.com/symfony/Yaml.git
+[submodule "vendor/Symfony\\Component\\File"]
+	path = vendor/Symfony\\Component\\File
+	url = https://github.com/symfony/Finder.git
+[submodule "vendor/Symfony\\Component\\Finder"]
+	path = vendor/Symfony\\Component\\Finder
+	url = https://github.com/symfony/Finder.git

@@ -1,0 +1,7 @@
+path:
+  tests: tests/TestGuy
+  output: tests/log
+  modules:
+
+options:
+  colors: true
