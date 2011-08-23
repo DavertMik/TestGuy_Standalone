@@ -16,4 +16,5 @@ use Symfony\Component\Console\Application,
  $app = new Application('TestGuy', TestGuy_Manager::VERSION);
  $app->add(new TestGuy_Command_Build('build'));
  $app->add(new TestGuy_Command_Run('run'));
+ $app->add(new TestGuy_Command_GenerateScenarios('generate-scenarios'));
  $app->run();

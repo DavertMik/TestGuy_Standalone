@@ -14,7 +14,7 @@
  * @method void openFile($filename)
  * @method void seeInFile($text)
  * @method void dontSeeInFile($text)
- * @method void findFile($filename)
+ * @method void seeFileFound($filename)
 **/
 
 

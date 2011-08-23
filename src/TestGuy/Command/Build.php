@@ -38,6 +38,10 @@ class %s extends %s
 
 
 EOF;
+    
+    public function getDescription() {
+        return 'Generates TestGuy.php class for all suites';
+    }
 
     protected function configure()
     {

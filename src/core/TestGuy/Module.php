@@ -13,6 +13,12 @@ abstract class TestGuy_Module {
 	protected $debugStack = array();
 
 	protected $storage = array();
+    
+    protected $config = array();
+    
+    public function _setConfig($config) {
+        $this->config = $config;
+    }
 
 	// HOOK: on every TestGuy class initialization
 	public function _cleanup()

@@ -48,11 +48,14 @@ class TestGuy_Command_Run extends TestGuy_Command_Base {
             $options[$option] = $value;
         }
 
-        if (isset($options['email'])) $options['html'] = true;
-
         if ($input->getArgument('test')) $options['debug'] = true;
+        if ($options['html']) $options['html'] = $this->config['path']['output'].'/result.html';
 
         return $options;
+    }
+
+    public function getDescription() {
+        return 'Runs the test suites';
     }
 
 	public function execute(InputInterface $input, OutputInterface $output) {

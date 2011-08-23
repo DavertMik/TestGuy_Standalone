@@ -48,10 +48,17 @@ class TestGuy_Manager {
         return $this->suite;
     }
 
+    /**
+     * @static
+     * @param $modulename
+     * @param null $path
+     * @return TestGuy_Module
+     */
     public static function addModule($modulename, $path = null) {
         if ($path) require_once $path;
         $module = new $modulename;
         self::$modules[$modulename] = $module;
+        return $module;
     }
 
     public static function removeModule($dumpModule) {

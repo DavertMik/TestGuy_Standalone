@@ -12,11 +12,12 @@ class TestGuy_Standalone_Manager extends TestGuy_Manager {
 
     protected $bootstrap = null;
 
-    public static function init($modules)
+    public static function init($modules, $config)
     {
         TestGuy_Manager::detachModules();
         foreach ($modules as $module) {
-            TestGuy_Manager::addModule('TestGuy_Module_'.$module);
+            $module = TestGuy_Manager::addModule('TestGuy_Module_'.$module);
+            $module->_setConfig($config[$module]);
         }
         TestGuy_Manager::initializeModules();
     }
