@@ -5,9 +5,10 @@ self:
   bootstrap: ~
 
 wikipedia:
-  class_name: TestGuy
+  class_name: WebTestGuy
   suite_class: PHPUnit_Framework_TestSuite
   modules: [SimpleWeb]
+
   SimpleWeb:
     start: http://wikipedia.com
     

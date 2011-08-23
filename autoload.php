@@ -22,6 +22,7 @@ $loader->registerPrefixes(array(
 ));
 
 $loader->register();
+$loader->registerNamespaceFallbacks(array(__DIR__.'/vendor/Mink/vendor'));
 
 require_once 'PHPUnit/Autoload.php';
 require_once __DIR__.'/src/core/BaseTestGuy.php';

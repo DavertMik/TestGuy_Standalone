@@ -69,13 +69,20 @@ class TestGuy_Command_Run extends TestGuy_Command_Base {
         $runner = new TestGuy_Runner();
         foreach ($this->suites as $suite => $settings) {
             $class = $settings['suite_class'];
-            if (!class_exists($class)) continue;
+            if (!class_exists($class)) throw new Exception("Suite class $class not found");
+
+            if (file_exists($testguy = sprintf('%s/%s/%s.php', $this->tests_path, $suite, $settings['class_name']))) {
+                require_once $testguy;
+            }
+
+            if (!class_exists($settings['class_name'])) throw new Exception("TestGuy class {$settings['class_name']} not found in $testguy");
+            
             $output->writeln("Starting $suite...");
 
-            TestGuy_Standalone_Manager::init($settings['modules']);
+            TestGuy_Standalone_Manager::init($settings);
 
             $testManager = new TestGuy_Standalone_Manager(new $class, $options['debug']);
-            $testManager->setBootstrtap($settings['bootstrap']);
+            if (isset($settings['bootstrap'])) $testManager->setBootstrtap($settings['bootstrap']);
 
             if ($test = $input->getArgument('test')) {
                 $output->writeln($test);

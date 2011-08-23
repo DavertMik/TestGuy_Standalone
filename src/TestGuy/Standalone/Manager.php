@@ -12,13 +12,15 @@ class TestGuy_Standalone_Manager extends TestGuy_Manager {
 
     protected $bootstrap = null;
 
-    public static function init($modules, $config)
+    public static function init($settings = array())
     {
+        if (!isset($settings['modules'])) throw new Exception('No modules configured!');
         TestGuy_Manager::detachModules();
-        foreach ($modules as $module) {
-            $module = TestGuy_Manager::addModule('TestGuy_Module_'.$module);
-            if (isset($config[$module])) {
-                $module->_setConfig($config[$module]);
+        $modules = $settings['modules'];
+        foreach ($modules as $module_name) {
+            $module = TestGuy_Manager::addModule('TestGuy_Module_'.$module_name);
+            if (isset($settings[$module_name])) {
+                $module->_setConfig($settings[$module_name]);
             }
         }
         TestGuy_Manager::initializeModules();

@@ -88,6 +88,7 @@ class TestGuy_Manager {
     public static function detachModules()
     {
         self::$modulesInitialized = false;
+        self::$modules = array();
     }
 
 

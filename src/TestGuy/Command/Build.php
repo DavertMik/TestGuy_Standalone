@@ -61,7 +61,7 @@ EOF;
 
         foreach ($this->suites as $suite => $settings) {
 
-            TestGuy_Standalone_Manager::init($settings['modules']);
+            TestGuy_Standalone_Manager::init($settings);
 
             $phpdoc = array();
             $methodCounter = 0;
@@ -85,10 +85,10 @@ EOF;
                     $methodCounter++;
                 }
             }
-            $contents = sprintf($this->template, implode("\r\n * ", $phpdoc), 'TestGuy', 'BaseTestGuy');
+            $contents = sprintf($this->template, implode("\r\n * ", $phpdoc), $settings['class_name'], 'BaseTestGuy');
 
             file_put_contents($file = $this->tests_path.'/'.$suite.'/'.$settings['class_name'].'.php', $contents);
             $output->writeln("$file generated sucessfully. $methodCounter methods added");
         }
-	}
+    }
 }
