@@ -3,3 +3,12 @@ self:
   suite_class: PHPUnit_Framework_TestSuite
   modules: [Cli, Filesystem]
   bootstrap: ~
+
+wikipedia:
+  class_name: TestGuy
+  suite_class: PHPUnit_Framework_TestSuite
+  modules: [SimpleWeb]
+  SimpleWeb:
+    start: http://wikipedia.com
+    
+    

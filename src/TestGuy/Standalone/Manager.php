@@ -17,7 +17,9 @@ class TestGuy_Standalone_Manager extends TestGuy_Manager {
         TestGuy_Manager::detachModules();
         foreach ($modules as $module) {
             $module = TestGuy_Manager::addModule('TestGuy_Module_'.$module);
-            $module->_setConfig($config[$module]);
+            if (isset($config[$module])) {
+                $module->_setConfig($config[$module]);
+            }
         }
         TestGuy_Manager::initializeModules();
     }
