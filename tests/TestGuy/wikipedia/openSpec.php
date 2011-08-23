@@ -1,5 +1,5 @@
 <?php
 $I = new WebTestGuy($scenario);
 $I->wantTo('open wikipedia site');
-$I->amOnPage('http://wikipedia.org');
-$I->see('The Free Encyclopedia');
+$I->amOnPage('http://www.wikipedia.org');
+$I->see('Google');

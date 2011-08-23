@@ -74,6 +74,9 @@ class TestGuy_ResultPrinter_UI extends PHPUnit_TextUI_ResultPrinter {
 		$length = $i = count($trace);
 		$last = array_shift($trace);
 		$action = $last->getHumanizedAction();
+        if (strpos($action, "am")===0) {
+            $action = 'become'.substr($action,2);
+        }
 		if (strpos($action, "don't")===0) {
 			$action = substr($action, 6);
 			$this->output->put("\nTestGuy unexpectedly managed to $action {$defect->getExceptionAsString()}");
@@ -88,7 +91,32 @@ class TestGuy_ResultPrinter_UI extends PHPUnit_TextUI_ResultPrinter {
 			if (($length - $i - 1) >= $this->traceLength) break;
 		}
 		$this->writeNewLine();
+        if ($this->debug) {
+            $this->printException($last->getAction(), $defect->thrownException());
+        }
 	}
+
+    public function printException($action, Exception $e) {
+        $i = 0;
+
+        $this->output->put("\n  ((Stack trace:))");
+        foreach ($e->getTrace() as $step) {
+            $i++;
+            if (strpos($step['function'], $action) !== false) break;
+            $this->output->put(sprintf("\n   #%s ((%s)) %s:%s",
+                                       $i,
+                                       isset($step['function']) ? $step['function'] : '',
+                                       isset($step['file']) ? $step['file'] : '',
+                                       isset($step['line']) ? $step['line'] : ''));
+            if ($i == 1) {
+                $this->output->put("\n        ((Arguments:))");
+                foreach ($step['args'] as $arg) {
+                    $this->output->put("\n            ".json_encode($arg).",");
+                }
+            }
+        }
+        $this->writeNewLine();
+    }
 
 
 }

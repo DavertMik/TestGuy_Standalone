@@ -53,7 +53,7 @@ abstract class TestGuy_Module_Mink extends TestGuy_Module
             $response = json_encode($response);
             $response = 'html page response '.$response;
         }
-        return array('contains', $text, strip_tags($this->browser->getPage()->getContent()), "'$text' in ".$response.'. For more details look for page snapshot in the log directory');
+        return array('contains', $text, strip_tags($this->session->getPage()->getContent()), "'$text' in ".$response.'. For more details look for page snapshot in the log directory');
     }
 
     public function click($link) {

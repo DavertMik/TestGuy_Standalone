@@ -11,9 +11,8 @@
 class TestGuy_Module_SimpleWeb extends TestGuy_Module_Mink {
 
     public function _cleanup() {
-        $zendOptions = array('httpversion' => '1.1');
+        $zendOptions = array('httpversion' => '1.1', 'useragent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110613 Firefox/6.0a2');
         if (isset($this->config['zend'])) array_merge($this->config['zend'], $zendOptions);
-        $this->debug($zendOptions);
         $mink = new \Behat\Mink\Mink(array('primary' => new \Behat\Mink\Session(new \Behat\Mink\Driver\GoutteDriver(new Goutte\Client($zendOptions)))));
         $this->session = $mink->getSession('primary');
     }
