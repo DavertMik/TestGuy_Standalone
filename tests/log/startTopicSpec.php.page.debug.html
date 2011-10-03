@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="ru">
+<head>
+	
+	
+	<title>Создание топика / Топики / LiveStreet - бесплатный движок социальной сети</title>
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="LiveStreet - официальный сайт бесплатного движка социальной сети" />
+	<meta name="keywords" content="движок, livestreet, блоги, социальная сеть, бесплатный, php" />
+
+	<link rel='stylesheet' type='text/css' href='http://localhost/livestreet/templates/cache/new-jquery/383247dd1a56220b6130d8a507ad2b52.css' />
+
+
+	<link href="http://localhost/livestreet/templates/skin/new-jquery/images/favicon.ico" rel="shortcut icon" />
+	<link rel="search" type="application/opensearchdescription+xml" href="http://localhost/livestreet/search/opensearch/" title="LiveStreet - бесплатный движок социальной сети" />
+
+		
+		
+	<script language="JavaScript" type="text/javascript">
+	var DIR_WEB_ROOT 			= 'http://localhost/livestreet';
+	var DIR_STATIC_SKIN 		= 'http://localhost/livestreet/templates/skin/new-jquery';
+	var DIR_ROOT_ENGINE_LIB     = 'http://localhost/livestreet/engine/lib'; 
+	var LIVESTREET_SECURITY_KEY = 'd20aa658098f8a4b64dbfa62d533ede2';
+	var SESSION_ID              = 'b6a7c937df9347ae61ef0652df8472a8'; 
+	var BLOG_USE_TINYMCE		= '';
+
+	var TINYMCE_LANG='en';
+			TINYMCE_LANG='ru';
+	
+	var aRouter = new Array();
+			aRouter['error'] = 'http://localhost/livestreet/error/';
+			aRouter['registration'] = 'http://localhost/livestreet/registration/';
+			aRouter['profile'] = 'http://localhost/livestreet/profile/';
+			aRouter['my'] = 'http://localhost/livestreet/my/';
+			aRouter['blog'] = 'http://localhost/livestreet/blog/';
+			aRouter['personal_blog'] = 'http://localhost/livestreet/personal_blog/';
+			aRouter['top'] = 'http://localhost/livestreet/top/';
+			aRouter['index'] = 'http://localhost/livestreet/index/';
+			aRouter['new'] = 'http://localhost/livestreet/new/';
+			aRouter['topic'] = 'http://localhost/livestreet/topic/';
+			aRouter['login'] = 'http://localhost/livestreet/login/';
+			aRouter['people'] = 'http://localhost/livestreet/people/';
+			aRouter['settings'] = 'http://localhost/livestreet/settings/';
+			aRouter['tag'] = 'http://localhost/livestreet/tag/';
+			aRouter['talk'] = 'http://localhost/livestreet/talk/';
+			aRouter['comments'] = 'http://localhost/livestreet/comments/';
+			aRouter['rss'] = 'http://localhost/livestreet/rss/';
+			aRouter['link'] = 'http://localhost/livestreet/link/';
+			aRouter['question'] = 'http://localhost/livestreet/question/';
+			aRouter['blogs'] = 'http://localhost/livestreet/blogs/';
+			aRouter['search'] = 'http://localhost/livestreet/search/';
+			aRouter['admin'] = 'http://localhost/livestreet/admin/';
+			aRouter['ajax'] = 'http://localhost/livestreet/ajax/';
+			aRouter['feed'] = 'http://localhost/livestreet/feed/';
+			aRouter['stream'] = 'http://localhost/livestreet/stream/';
+			aRouter['photoset'] = 'http://localhost/livestreet/photoset/';
+		</script>
+
+	<script type='text/javascript' src='http://localhost/livestreet/templates/cache/new-jquery/2060a5c008871d3707abfa82f18a2cc6.js'></script>
+
+    
+	<script language="JavaScript" type="text/javascript">
+		var tinyMCE=false;
+		ls.lang.load([]);
+	</script>
+	
+	
+</head>
+
+
+<body onload="prettyPrint()">
+	
+	<div id="header">
+			<div class="profile">
+			<a href="http://localhost/livestreet/profile/user/"><img src="http://localhost/livestreet/templates/skin/new-jquery/images/avatar_48x48.jpg" alt="user" class="avatar" /></a>
+			<ul>
+				<li>
+					<a href="http://localhost/livestreet/profile/user/" class="username">user</a> 
+					(<a href="http://localhost/livestreet/login/exit/?security_ls_key=d20aa658098f8a4b64dbfa62d533ede2" class="logout">выход</a>)
+				</li>
+				<li>
+											<a href="http://localhost/livestreet/talk/" id="new_messages" class="message"></a>
+										Настройки <a href="http://localhost/livestreet/settings/profile/" class="author">профиля</a> | 
+					<a href="http://localhost/livestreet/settings/tuning/" class="author">сайта</a> 
+				</li>
+				<li>Рейтинг <strong>0.00</strong></li>
+				
+				
+			</ul>
+		</div>
+		
+
+	<a href="http://localhost/livestreet" class="logo">Live<span>Street</span></a>
+	
+	
+	<ul class="pages">
+		<li class="active"><a href="http://localhost/livestreet">Топики</a></li>
+		<li ><a href="http://localhost/livestreet/blogs/">Блоги</a></li>
+		<li ><a href="http://localhost/livestreet/people/">Люди</a></li>
+					<li >
+				<a href="http://localhost/livestreet/stream/">Активность</a>
+			</li>
+								
+		
+	</ul>
+</div>	<div id="nav">
+	<div id="nav-inner">
+			
+	
+					<ul class="menu">
+	<li class="active">
+		<a href="http://localhost/livestreet/topic/add/">Новые</a>
+					<ul class="sub-menu" >
+				<li class="active"><a href="http://localhost/livestreet/topic/add/">Топик</a></li>
+				<li ><a href="http://localhost/livestreet/question/add/">Опрос</a></li>
+				<li ><a href="http://localhost/livestreet/link/add/">Ссылка</a></li>
+                <li ><a href="http://localhost/livestreet/photoset/add/">Фотосет</a></li>
+				
+				<li ><a href="http://localhost/livestreet/blog/add/">Создать блог</a></li>
+			</ul>
+			</li>
+
+	<li >
+		<a href="http://localhost/livestreet/topic/saved/">Черновики</a>
+			</li>
+
+	
+</ul>
+		
+		
+		
+
+				
+		
+		<form action="http://localhost/livestreet/search/topics/" method="GET" class="search">
+			<input class="text" type="text" onblur="if (!value) value=defaultValue" onclick="if (value==defaultValue) value=''" value="Поиск" name="q" />
+			<input class="search-submit" type="submit" value="" />
+		</form>
+	</div>
+</div>
+
+	<div id="container">
+		<div id="wrapper" class=" ">
+			<div id="content" >
+				<div id="content-inner">
+													<ul class="system-message-error">
+					<li>
+									<strong>Ошибка</strong>:
+								Вы уже писали топик с таким содержанием
+			</li>
+				</ul>
+	
+
+						
+					
+
+	<form method="POST" action="" class="upload-form popup jqmWindow" enctype="multipart/form-data" id="form_upload_img">
+	<h3>Вставка изображения</h3>
+	<p>
+		<label>Файл:<br />
+		<input type="file" name="img_file" id="img_file" value="" class="input-wide" /></label>
+	</p>
+	<p>
+		<label>Ссылка на изображение:<br />
+		<input type="text" name="img_url" value="http://" class="input-wide" /></label>
+	</p>
+	
+	<p>
+		<label for="align">Выравнивание:</label>
+		<select name="align" class="input-wide">
+			<option value="">нет</option>
+			<option value="left">слева</option>
+			<option value="right">справа</option>
+			<option value="center">по центру</option>
+		</select>
+	</p>
+	<p><label>Описание:<br />
+	<input type="text" class="input-wide" name="title" value="" /></label></p>
+	
+	<input type="button" value="Загрузить" class="button" onclick="ls.ajaxUploadImg('form_upload_img','topic_text');" />
+	<input type="button" value="Отмена" class="button jqmClose" />
+</form>
+		<script type="text/javascript">
+	jQuery(document).ready(function($){
+		ls.lang.load({"panel_b":"\u0436\u0438\u0440\u043d\u044b\u0439","panel_i":"\u043a\u0443\u0440\u0441\u0438\u0432","panel_u":"\u043f\u043e\u0434\u0447\u0435\u0440\u043a\u043d\u0443\u0442\u044b\u0439","panel_s":"\u0437\u0430\u0447\u0435\u0440\u043a\u043d\u0443\u0442\u044b\u0439","panel_url":"\u0432\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0443","panel_url_promt":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0441\u044b\u043b\u043a\u0443","panel_code":"\u043a\u043e\u0434","panel_video":"\u0432\u0438\u0434\u0435\u043e","panel_image":"\u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435","panel_cut":"\u043a\u0430\u0442","panel_quote":"\u0446\u0438\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c","panel_list":"\u0421\u043f\u0438\u0441\u043e\u043a","panel_list_ul":"UL LI","panel_list_ol":"OL LI","panel_title":"\u0417\u0430\u0433\u043e\u043b\u043e\u0432\u043e\u043a","panel_clear_tags":"\u043e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u043e\u0442 \u0442\u0435\u0433\u043e\u0432","panel_video_promt":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0441\u044b\u043b\u043a\u0443 \u043d\u0430 \u0432\u0438\u0434\u0435\u043e","panel_list_li":"\u043f\u0443\u043d\u043a\u0442 \u0441\u043f\u0438\u0441\u043a\u0430","panel_image_promt":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0441\u044b\u043b\u043a\u0443 \u043d\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435","panel_user":"\u0432\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f","panel_user_promt":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043b\u043e\u0433\u0438\u043d \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f"});
+		// Подключаем редактор		
+		$('#topic_text').markItUp(getMarkitupSettings());
+	});
+	</script>
+
+
+
+<div class="topic" style="display: none;">
+	<div class="content" id="text_preview"></div>
+</div>
+
+
+	<h2>Создание топика</h2>
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+	
+
+	<input type="hidden" name="security_ls_key" value="d20aa658098f8a4b64dbfa62d533ede2" />
+
+	<p><label for="blog_id">В какой блог публикуем?</label><br />
+	<select name="blog_id" id="blog_id" onChange="ls.blog.loadInfo($(this).val());" class="input-wide">
+		<option value="0">мой персональный блог</option>
+			</select></p>
+
+	<script language="JavaScript" type="text/javascript">
+		jQuery(document).ready(function($){
+			ls.blog.loadInfo($('#blog_id').val());
+		});
+    </script>
+	
+	<p><label for="topic_title">Заголовок:</label><br />
+	<input type="text" id="topic_title" name="topic_title" value="Функциональное тестирование" class="input-wide" /><br />
+	<span class="note">Заголовок должен быть наполнен смыслом, чтобы можно было понять, о чем будет топик.</span></p>
+
+	<label for="topic_text">Текст (Доступны html-теги):</label>
+	<textarea name="topic_text" id="topic_text" rows="20" class="input-wide">Мы используем TestGuy для тестирования</textarea><br />
+
+	<p><label for="topic_tags">Метки:</label><br />
+	<input type="text" id="topic_tags" name="topic_tags" value="tdd" class="input-wide autocomplete-tags-sep" /><br />
+	<span class="note">Метки нужно разделять запятой. Например: клон хабры, блоги, рейтинг, google, сиськи, кирпич.</span></p>
+
+	<p><label for="topic_forbid_comment"><input type="checkbox" id="topic_forbid_comment" name="topic_forbid_comment" class="checkbox" value="1"  />
+	запретить комментировать</label><br />
+	<span class="note">Если отметить эту галку, то нельзя будет оставлять комментарии к топику</span></p>
+
+	
+	
+
+	<p class="buttons">
+		<input type="submit" name="submit_topic_publish" value="опубликовать" class="right" />
+		<input type="submit" name="submit_preview" value="предпросмотр" onclick="jQuery('#text_preview').parent().show(); ls.tools.textPreview('topic_text',false); return false;" />&nbsp;
+		<input type="submit" name="submit_topic_save" value="сохранить в черновиках" />
+	</p>	
+</form>
+
+
+
+			
+			</div><!-- /content-inner -->
+		</div><!-- /content -->
+
+					<div id="sidebar">
+													<div class="block">		
+	<h2>Описание блога</h2>						
+	<p id="block_blog_info"></p>					
+</div>
+
+<div class="block">		
+	<h2>Заметка</h2>						
+	<p><strong>Тег &lt;cut&gt; сокращает длинные записи</strong>, скрывая их целиком или частично под ссылкой («читать дальше»). Скрытая часть не видна в блоге, но доступна в полной записи на странице топика.</p>					
+</div>						</div>			</div><!-- /wrapper -->
+
+	<div id="footer">
+		<div id="footer-inner">
+			<div class="right">&copy; Powered by <a href="http://livestreetcms.ru">LiveStreet CMS</a></div>
+			Design by — <a href="http://www.xeoart.com">Студия XeoArt</a>
+			<img border="0" src="http://localhost/livestreet/templates/skin/new-jquery/images/xeoart.gif">
+						
+		</div>
+	</div>
+
+</div><!-- /container -->
+
+
+
+</body>
+</html>
