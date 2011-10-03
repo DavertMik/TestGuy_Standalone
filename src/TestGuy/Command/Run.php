@@ -60,7 +60,7 @@ class TestGuy_Command_Run extends TestGuy_Command_Base {
 
 	public function execute(InputInterface $input, OutputInterface $output) {
 
-        ini_set('memory_limit', '1024M');
+        ini_set('memory_limit', isset($this->config['memory_limit']) ? $this->config['memory_limit'] : '1024M');
 
         $options = $this->prepareOptions($input);
 

@@ -28,12 +28,12 @@ class TestGuy_Module_SimpleWeb extends TestGuy_Module_Mink {
 		    $url .= sprintf('%s=%s',$field->getAttribute('name'), $field->getAttribute('value')).'&';
 	    }
 
-	    $fields = $this->session->getPage()->findAll($selector.' textarea');
+	    $fields = $this->session->getPage()->findAll('css', $selector.' textarea');
 	    foreach ($fields as $field) {
 		    $url .= sprintf('%s=%s',$field->getAttribute('name'), $field->getText()).'&';
 	    }
 
-	    $fields = $this->session->getPage()->findAll($selector.' select');
+	    $fields = $this->session->getPage()->findAll('css', $selector.' select');
 	    foreach ($fields as $field) {
             $url .= sprintf('%s=%s',$field->getAttribute('name'), $field->getValue()).'&';
 	    }
@@ -64,12 +64,17 @@ class TestGuy_Module_SimpleWeb extends TestGuy_Module_Mink {
 	protected function call($uri, $method = 'get', $params = array())
 	{
         $browser = $this->session->getDriver()->getClient();
-        $uri = $browser->getAbsoluteUri($uri);
+//        $uri = $browser->getAbsoluteUri($uri);
 
     	$this->debug('Request ('.$method.'): '.$uri.' '. json_encode($params));
 		$browser->request($method, $uri, $params);
+
 		$this->debug('Response code: '.$this->session->getStatusCode());
 	}
 
+	public function _failed(TestGuy_TestCase $test, $fail) {
+		file_put_contents($this->config['log'].'/'.$test->getFileName().'.page.debug.html', $this->session->getPage()->getContent());
+
+	}
     
 }

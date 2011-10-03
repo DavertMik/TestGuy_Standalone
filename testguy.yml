@@ -5,3 +5,4 @@ path:
 
 options:
   colors: true
+  memory_limit: 1024M

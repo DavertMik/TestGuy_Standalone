@@ -4,12 +4,13 @@ self:
   modules: [Cli, Filesystem]
   bootstrap: ~
 
-wikipedia:
+livestreet:
   class_name: WebTestGuy
   suite_class: PHPUnit_Framework_TestSuite
   modules: [SimpleWeb]
 
   SimpleWeb:
-    start: http://wikipedia.com
+    start: http://localhost/livestreet/
+    log: tests/log
     
     

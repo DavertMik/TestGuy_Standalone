@@ -16,7 +16,8 @@ abstract class TestGuy_Module_Mink extends TestGuy_Module
 
     public function amOnPage($page)
     {
-        $this->session->visit($page);
+
+        $this->session->visit($this->config['start'].$page);
     }
 
     public function dontSee($text, $selector = null) {
