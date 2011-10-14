@@ -25,3 +25,6 @@
 [submodule "vendor/Mink"]
 	path = vendor/Mink
 	url = git://github.com/Behat/Mink.git
+[submodule "src/core"]
+	path = src/core
+	url = git://github.com/DavertMik/TestGuy_Core.git
