@@ -10,7 +10,7 @@
  
 class TestGuy_Scenario {
     /**
-     * @var    PHPUnit_Extensions_Story_TestCase
+     * @var    TestGuy_TestCase
      */
     protected $test;
 
@@ -29,7 +29,7 @@ class TestGuy_Scenario {
     /**
      * Constructor.
      *
-     * @param  PHPUnit_Extensions_Story_TestCase $caller
+     * @param  TestGuy_TestCase $test
      */
     public function __construct(TestGuy_TestCase $test)
     {
@@ -40,44 +40,22 @@ class TestGuy_Scenario {
 	public function setFeature($feature) {
 	    $this->feature = strtolower($feature);
 	}
-    /**
-     * Adds a "Given" step to the scenario.
-     *
-     * @param  array $arguments
-     * @return PHPUnit_Extensions_Story_TestCase
-     */
+
     public function given($arguments)
     {
         return $this->addStep(new TestGuy_Step_Condition($arguments));
     }
 
-    /**
-     * Adds a "When" step to the scenario.
-     *
-     * @param  array $arguments
-     * @return PHPUnit_Extensions_Story_TestCase
-     */
     public function when($arguments)
     {
         return $this->addStep(new TestGuy_Step_Action($arguments));
     }
 
-    /**
-     * Adds a "Then" step to the scenario.
-     *
-     * @param  array $arguments
-     * @return PHPUnit_Extensions_Story_TestCase
-     */
     public function then($arguments)
     {
         return $this->addStep(new TestGuy_Step_Assertion($arguments));
     }
 
-    /**
-     * Runs this scenario.
-     *
-     * @param  array $world
-     */
     public function run()
     {
         foreach ($this->steps as $step)
@@ -86,12 +64,6 @@ class TestGuy_Scenario {
         }
     }
 
-    /**
-     * Adds a step to the scenario.
-     *
-     * @param  PHPUnit_Extensions_Story_Step $step
-     * @return PHPUnit_Extensions_Story_TestCase
-     */
     protected function addStep(TestGuy_Step $step)
     {
         $this->steps[] = $step;

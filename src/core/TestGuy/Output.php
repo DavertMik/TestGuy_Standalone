@@ -64,7 +64,7 @@ class TestGuy_Output {
 
 	public function writeln($message) {
 
-		$this->put("\n= ".$message);
+		$this->put("\n# ".$message);
 
 	}
 

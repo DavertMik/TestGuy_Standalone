@@ -15,10 +15,22 @@ abstract class TestGuy_Module {
 	protected $storage = array();
     
     protected $config = array();
+
+    protected $requiredFields = array();
     
     public function _setConfig($config) {
         $this->config = $config;
+        $fields = array_keys($this->config);
+        if (array_intersect($this->requiredFields, $fields) != $this->requiredFields)
+            throw new TestGuy_Exception_ModuleConfig(get_class($this),"
+                Options: ".implode(', ', $this->requiredFields)." are required\n
+                Update cunfiguration and set all required fields\n\n
+        ");
+        $this->_initialize();
     }
+
+    // HOOK: used after configuration is loaded
+    public function _initialize() {}
 
 	// HOOK: on every TestGuy class initialization
 	public function _cleanup()

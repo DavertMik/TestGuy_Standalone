@@ -73,6 +73,10 @@ class TestGuy_ResultPrinter_UI extends PHPUnit_TextUI_ResultPrinter {
 		$trace = array_reverse($failedTest->getTrace());
 		$length = $i = count($trace);
 		$last = array_shift($trace);
+        if (!method_exists($last,'getHumanizedAction')) {
+            $this->output->put("\n ".$defect->getExceptionAsString());
+            return;
+        }
 		$action = $last->getHumanizedAction();
         if (strpos($action, "am")===0) {
             $action = 'become'.substr($action,2);
@@ -109,9 +113,11 @@ class TestGuy_ResultPrinter_UI extends PHPUnit_TextUI_ResultPrinter {
                                        isset($step['file']) ? $step['file'] : '',
                                        isset($step['line']) ? $step['line'] : ''));
             if ($i == 1) {
-                $this->output->put("\n        ((Arguments:))");
-                foreach ($step['args'] as $arg) {
-                    $this->output->put("\n            ".json_encode($arg).",");
+                if (count($step['arguments'])) {
+                    $this->output->put("\n        ((Arguments:))");
+                    foreach ($step['args'] as $arg) {
+                        $this->output->put("\n            ".json_encode($arg).",");
+                    }
                 }
             }
         }
