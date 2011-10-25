@@ -6,7 +6,7 @@
  * 
  */
  
-abstract class TestGuy_Module_Mink extends TestGuy_Module
+abstract class TestGuy_Module_Abstract_Mink extends TestGuy_Module
 {
     /**
      * @var \Behat\Mink\Session

@@ -8,7 +8,7 @@
  * 
  */
  
-class TestGuy_Module_Web extends TestGuy_Module_Mink {
+class TestGuy_Module_Web extends TestGuy_Module_Abstract_Mink {
 
     protected $requiredFields = array('start', 'log');
 
