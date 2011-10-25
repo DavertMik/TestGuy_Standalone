@@ -22,8 +22,8 @@
 	var DIR_WEB_ROOT 			= 'http://localhost/livestreet';
 	var DIR_STATIC_SKIN 		= 'http://localhost/livestreet/templates/skin/new-jquery';
 	var DIR_ROOT_ENGINE_LIB     = 'http://localhost/livestreet/engine/lib'; 
-	var LIVESTREET_SECURITY_KEY = 'd20aa658098f8a4b64dbfa62d533ede2';
-	var SESSION_ID              = 'b6a7c937df9347ae61ef0652df8472a8'; 
+	var LIVESTREET_SECURITY_KEY = '9aeacc54333906688064521743ae669a';
+	var SESSION_ID              = '1dd832121d89ac7a2cef669b2a84027e'; 
 	var BLOG_USE_TINYMCE		= '';
 
 	var TINYMCE_LANG='en';
@@ -78,7 +78,7 @@
 			<ul>
 				<li>
 					<a href="http://localhost/livestreet/profile/user/" class="username">user</a> 
-					(<a href="http://localhost/livestreet/login/exit/?security_ls_key=d20aa658098f8a4b64dbfa62d533ede2" class="logout">выход</a>)
+					(<a href="http://localhost/livestreet/login/exit/?security_ls_key=9aeacc54333906688064521743ae669a" class="logout">выход</a>)
 				</li>
 				<li>
 											<a href="http://localhost/livestreet/talk/" id="new_messages" class="message"></a>
@@ -203,7 +203,7 @@
 <form action="" method="POST" enctype="multipart/form-data">
 	
 
-	<input type="hidden" name="security_ls_key" value="d20aa658098f8a4b64dbfa62d533ede2" />
+	<input type="hidden" name="security_ls_key" value="9aeacc54333906688064521743ae669a" />
 
 	<p><label for="blog_id">В какой блог публикуем?</label><br />
 	<select name="blog_id" id="blog_id" onChange="ls.blog.loadInfo($(this).val());" class="input-wide">

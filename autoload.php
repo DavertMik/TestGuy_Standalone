@@ -13,9 +13,9 @@ $loader->registerNamespaces(array(
 ));
 
 $loader->registerPrefixes(array(
-    'TestGuy_Command' => __DIR__ . '/src/',
-    'TestGuy_Module' => __DIR__ . '/src/',
-    'TestGuy_Standalone' => __DIR__ . '/src/',
+    'TestGuy_Command' => __DIR__ . '/src/standalone/',
+    'TestGuy_Module' => __DIR__ . '/src/standalone/',
+    'TestGuy_Standalone' => __DIR__ . '/src/standalone/',
     'TestGuy' => __DIR__ . '/src/core/',
 
 
