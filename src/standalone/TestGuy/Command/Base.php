@@ -18,9 +18,15 @@ class TestGuy_Command_Base extends \Symfony\Component\Console\Command\Command {
 
     protected function configure()
     {
-        $this->config = Yaml::parse('testguy.yml');
+        $config = file_exists('testguy.yml') ? Yaml::parse('testguy.yml') : array();
+        $distConfig = file_exists('testguy.dist.yml') ? Yaml::parse('testguy.dist.yml') : array();
+        $this->config = array_merge($distConfig, $config);
+                                
         $this->tests_path = $this->config['path']['tests'];
-        $this->suites = Yaml::parse($this->tests_path . '/suites.yml');
+
+        $suites = file_exists($this->tests_path . '/suites.yml') ? Yaml::parse($this->tests_path . '/suites.yml') : array();
+        $distSuites = file_exists($this->tests_path . '/suites.dist.yml') ? Yaml::parse($this->tests_path . '/suites.dist.yml') : array();
+        $this->suites = array_merge($distSuites, $suites);
 
     }
     
