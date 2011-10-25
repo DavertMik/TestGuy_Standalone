@@ -1,0 +1,9 @@
+I WANT TO TEST GENERATE-SCENARIOS COMMAND
+
+I execute "php testguy.php generate-scenarios"
+I see in output "scenarios generated"
+I see file found ["scenarios.txt","tests/log/scenarios"]
+
+...I expect to see this files translated into human language 
+I see in file "I want to test generate-scenarios command"
+I see in file "I execute "php testguy.php generate-scenarios""
