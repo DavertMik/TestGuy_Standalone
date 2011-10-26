@@ -28,3 +28,7 @@
 [submodule "src/core"]
 	path = src/core
 	url = git://github.com/DavertMik/TestGuy_Core.git
+[submodule "src/standalone/TestGuy/Module"]
+	path = src/standalone/TestGuy/Module
+	url = git://github.com/DavertMik/TestGuy_Modules.git
+
