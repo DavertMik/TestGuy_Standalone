@@ -1,6 +1,0 @@
-I WANT TO TEST BUILD COMMAND
-
-I execute "php testguy.php build --silent"
-I see in output "generated sucessfully"
-I see file found ["TestGuy.php","tests"]
-I see in file "seeInFile($text)"

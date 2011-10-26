@@ -1,8 +1,6 @@
-path:
-  tests: tests/TestGuy
+paths:
+  tests: tests/testguy
   output: tests/log
-  modules:
-
 options:
   colors: true
   memory_limit: 1024M
