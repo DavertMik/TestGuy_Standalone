@@ -112,7 +112,7 @@ $I = new TestGuy($scenario);
 $I->wantTo('actions you are going to perform');
 ```
 
-$I - is a magical object. It catches all actions you can perform. Just type ```$I->``` in your IDE and you will see what actions you can execute.
+$I - is a magical object. It stores all actions you can perform. Just type ```$I->``` in your IDE and you will see what actions you can execute.
 For instance, the Web module is connected and you can open browser on specific page and test the expected result.
 
 ``` php
