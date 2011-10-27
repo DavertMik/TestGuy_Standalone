@@ -1,10 +1,29 @@
 # TestGuy Standalone 
-## Functional testing suite
+## Functional Testing Framework
 
 TestGuy is a functional testing framework powered by PHPUnit.
 Designed make tests easy to write, read, and debug.
 
-## TestGuy principles
+## In a Glance
+
+``` php
+<?php
+
+$I = new TestGuy($scenario);
+$I->wantTo('create wiki page');
+$I->amOnPage('/');
+$I->click('Pages');
+$I->click('New');
+$I->see('New Page');
+$I->submitForm('#pageForm', array('page' => array('title' => 'Tree of Life Movie Review', 'body' => 'Next time don\'t let Hollywood create arthouse.')));
+$I->see('page created'); // notice generated
+$I->see('Tree of Life Movie Review','h1'); // head of page of is our title
+$I->seeInCurrentAddress('pages/tree-of-life-mobie-review'); // slug is generated
+$I->seeInDatabase('pages', array('title' => 'Tree of Life Movie Review')); // data is stored id database
+
+```
+
+## Principles
 TestGuy library allows to write test scenarios in PHP with DSL designed to look like native English.
 Imagine your tester describes her actions and you write them as a functional tests!
 Tester can perform some actions and see the results. Whenever she doesn't see expected value the test fails.
