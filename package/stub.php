@@ -1,6 +1,15 @@
 #!/usr/bin/env php
 <?php
 Phar::mapPhar();
+
+if (glob('mink/autoload.php')) {
+ require_once 'mink/autoload.php';
+}
+
+if (glob('PHPUnit/Autoload.php')) {
+	require_once 'PHPUnit/Autoload.php';
+}
+
 require_once 'phar://testguy.phar/vendor/UniversalClassLoader.php';
 
 $loader = new UniversalClassLoader();
@@ -16,14 +25,6 @@ $loader->registerPrefixes(array(
 ));
 
 $loader->register();
-
-if (glob('mink/autoload.php')) {
- require_once 'mink/autoload.php';
-}
-
-if (glob('PHPUnit/Autoload.php')) {
-	require_once 'PHPUnit/Autoload.php';
-}
 
 require_once 'phar://testguy.phar/src/core/BaseTestGuy.php';
 
