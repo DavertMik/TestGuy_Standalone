@@ -17,6 +17,8 @@ Cover your application with functional tests and let them stay simple to read, s
 Use TestGuy!
 
 ## In a Glance
+This is the sample TestGuy test. User is accessing the site to create a new wiki page about the movie.
+He gets to 'new' page, submits form, and creates new page.
 
 ``` php
 <?php
