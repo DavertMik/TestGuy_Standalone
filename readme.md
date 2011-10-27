@@ -18,7 +18,7 @@ Use TestGuy!
 
 ## In a Glance
 This is the sample TestGuy test. User is accessing the site to create a new wiki page about the movie.
-He gets to 'new' page, submits form, and creates new page.
+He gets to 'new' page, submits form, and sees the page he just created. Also he performs additional checks, if the slug is generated and if the database record is saved.
 
 ``` php
 <?php
