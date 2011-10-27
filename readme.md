@@ -65,7 +65,9 @@ php testguy.phar init
 ````
 
 That will create a 'tests' directory with a sample suite inside it.
-By default suite will be configured to test web sites and repopulate database after each run.
+By default suite will be configured to test web sites with Mink.
+Configuration is stored in ```tests/testguy/suites.yml````.
+
 
 Build TestGuy class
 
@@ -73,9 +75,7 @@ Build TestGuy class
 php testguy.phar build
 ````
 
-Edit ```tests/testguy/suites.yml```` and update configuration for modules.
-Remove DbPoplator module from config if you don't need to repopulate database.
-If you remove this module you can try to run the suite:
+Then your suite is ready to run first test file.
 
 ````
 php testguy.phar run
