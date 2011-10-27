@@ -31,13 +31,16 @@ class TestGuy_Module_DbPopulator extends TestGuy_Module {
             $dbh = new PDO($this->config['dsn'], $this->config['user'], $this->config['password']);
             $this->dbh = $dbh;
         } catch (PDOException $e) {
-            throw new TestGuy_Exception_Module(__CLASS__, $e->getMessage());
+            //
         }
     }
 
     public function _before() {
 
         $dbh = $this->dbh;
+        if (!$dbh) {
+            throw new TestGuy_Exception_ModuleConfig(__CLASS__, "No connection to database. Remove this module from config if you don't need database repopulation");
+        }
         try {
             $res = $dbh->query('show tables')->fetchAll();
             foreach ($res as $row) {

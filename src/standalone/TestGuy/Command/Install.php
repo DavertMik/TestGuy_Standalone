@@ -18,20 +18,25 @@ use \Symfony\Component\Console\Helper\DialogHelper;
 
 class TestGuy_Command_Install extends \Symfony\Component\Console\Command\Command {
 
-    
+    public function getDescription() {
+        return 'Installs all required components: PHPUnit, Mink, Symfony Components';
+    }
 
 	public function execute(InputInterface $input, OutputInterface $output) {
 
         $dialog = new DialogHelper();
         $confirmed = $dialog->askConfirmation($output,
             "This will install all TestGuy dependencies through PEAR installer.\n"
-            . "Symfony Components and Mink, will be installed.\n"
+            . "PHPUnit, Symfony Components, and Mink will be installed.\n"
             . "Do you want to proceed? (Y/n)");
         if (!$confirmed) return;
 
+        $output->writeln('Intalling PHPUnit...');
+		$output->write(shell_exec('pear config-set auto_discover 1'));
+		$output->write(shell_exec('pear install pear.phpunit.de/PHPUnit'));
+
         $output->writeln("Installing Symfony Components...");
         $output->write(shell_exec("pear channel-discover pear.symfony.com"));
-        $output->write(shell_exec('pear install symfony2/Yaml'));
         $output->write(shell_exec('pear install symfony2/Finder'));
 
         $output->writeln("Installing Mink...");

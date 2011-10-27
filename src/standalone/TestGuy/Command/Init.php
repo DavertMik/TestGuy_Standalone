@@ -18,6 +18,10 @@ use \Symfony\Component\Yaml\Yaml;
 
 class TestGuy_Command_Init extends \Symfony\Component\Console\Command\Command {
 
+    public function getDescription() {
+        return 'Initializes empty test suite and default configuration file';
+    }
+
     public function execute(InputInterface $input, OutputInterface $output) {
 
         if (file_exists('testguy.dist.yml')) {
@@ -45,19 +49,24 @@ class TestGuy_Command_Init extends \Symfony\Component\Console\Command\Command {
         @mkdir('tests');
         @mkdir('tests/testguy');
         @mkdir('tests/log');
+        @mkdir('tests/dump');
         @mkdir('tests/testguy/app');
-        
+
+        file_put_contents('tests/dump/app.sql','/* Replace this file with actual dump of your database */');
+        file_put_contents('tests/testguy/app/SampleSpec.php',"<?php\n\$I = new TestGuy(\$scenario);\n\$I->wantTo('test some feature of my app');");
+
         $suiteConfig = array(
             'app' => array(
                 'class_name' => 'TestGuy',
                 'suite_class' => 'PHPUnit_Framework_TestSuite',
                 'modules' => array('Web', 'DbPopulator'),
+                'bootstrap' => '~',
                 'Web' => array(
                     'start' => 'http://localhost/myapp/ # replace with url for app you want to test',
                     'log' => 'tests/log # path is used to store page snapshots'
                 ),
                 'DbPopulator' => array(
-                    'dump' => '',
+                    'dump' => 'tests/dump/app.sql',
                     'dsn' => '',
                     'user' => '',
                     'password' => ''

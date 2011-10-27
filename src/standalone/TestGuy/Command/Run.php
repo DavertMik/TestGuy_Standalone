@@ -49,7 +49,7 @@ class TestGuy_Command_Run extends TestGuy_Command_Base {
         }
 
         if ($input->getArgument('test')) $options['debug'] = true;
-        if ($options['html']) $options['html'] = $this->config['path']['output'].'/result.html';
+        if ($options['html']) $options['html'] = $this->config['paths']['output'].'/result.html';
 
         return $options;
     }
@@ -69,7 +69,7 @@ class TestGuy_Command_Run extends TestGuy_Command_Base {
         $runner = new TestGuy_Runner();
         foreach ($this->suites as $suite => $settings) {
             $class = $settings['suite_class'];
-            if (!class_exists($class)) throw new Exception("Suite class $class not found");
+            if (!class_exists($class)) throw new Exception("Suite class for $suite not found");
 
             if (file_exists($testguy = sprintf('%s/%s/%s.php', $this->tests_path, $suite, $settings['class_name']))) {
                 require_once $testguy;

@@ -1,6 +1,6 @@
 paths:
-  tests: tests/testguy
-  output: tests/log
+    tests: tests/testguy
+    output: tests/log
 options:
-  colors: true
-  memory_limit: 1024M
+    colors: true
+    memory_limit: 1024M

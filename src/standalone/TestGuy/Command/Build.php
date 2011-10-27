@@ -55,7 +55,7 @@ EOF;
 	{
         if (!$input->getOption('silent')) {
             $dialog = new DialogHelper();
-            $confirmed = $dialog->askConfirmation($output, "This will build TestGuy class in your project's lib/test dir. Do you want to proceed? (Y/n)");
+            $confirmed = $dialog->askConfirmation($output, "This will build TestGuy classes for your suites . Do you want to proceed? (Y/n)");
             if (!$confirmed) return;
         }
 

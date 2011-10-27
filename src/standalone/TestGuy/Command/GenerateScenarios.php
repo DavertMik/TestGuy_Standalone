@@ -25,17 +25,17 @@ class TestGuy_Command_GenerateScenarios extends TestGuy_Command_Base {
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 
-        @mkdir($path = $this->config['path']['output'].'/scenarios');
+        @mkdir($path = $this->config['paths']['output'].'/scenarios');
         foreach ($this->suites as $suite => $settings) {
             $class = $settings['suite_class'];
             if (!class_exists($class)) continue;
 
             $output->writeln('Suite '.$suite.' started...');
 
-            TestGuy_Standalone_Manager::init($settings['modules']);
+            TestGuy_Standalone_Manager::init($settings);
 
             $testManager = new TestGuy_Standalone_Manager(new $class, false);
-            $testManager->setBootstrtap($settings['bootstrap']);
+            if (isset($settings['bootstrap'])) $testManager->setBootstrtap($settings['bootstrap']);
             $testManager->loadTests($this->tests_path.'/'.$suite);
             $tests = $testManager->getCurrentSuite()->tests();
 
