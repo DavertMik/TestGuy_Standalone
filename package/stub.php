@@ -2,14 +2,6 @@
 <?php
 Phar::mapPhar();
 
-if (glob('mink/autoload.php')) {
- require_once 'mink/autoload.php';
-}
-
-if (glob('PHPUnit/Autoload.php')) {
-	require_once 'PHPUnit/Autoload.php';
-}
-
 require_once 'phar://testguy.phar/vendor/UniversalClassLoader.php';
 
 $loader = new UniversalClassLoader();
@@ -18,15 +10,18 @@ $loader->registerNamespaces(array(
 ));
 
 $loader->registerPrefixes(array(
-    'TestGuy_Command' => 'phar://testguy.phar/src/standalone/',
-    'TestGuy_Module' => 'phar://testguy.phar//standalone/',
+    'TestGuy_Command' =>    'phar://testguy.phar/src/standalone/',
+    'TestGuy_Module' =>     'phar://testguy.phar/src/standalone/',
     'TestGuy_Standalone' => 'phar://testguy.phar/src/standalone/',
-    'TestGuy' => 'phar://testguy.phar/src/core/',
+    'TestGuy' =>            'phar://testguy.phar/src/core/',
 ));
 
 $loader->register();
 
 require_once 'phar://testguy.phar/src/core/BaseTestGuy.php';
+
+@include_once 'mink/autoload.php';
+@include_once 'PHPUnit/Autoload.php';
 
 use Symfony\Component\Console\Application,
     Symfony\Component\Console\Input\InputInterface,

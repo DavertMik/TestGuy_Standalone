@@ -83,6 +83,7 @@ TestGuy tests should be placed in suite directory and should be ended with 'Spec
 Tests should always start with this lines:
 
 ``` php
+<?php
 $I = new TestGuy($scenario);
 $I->wantTo('actions you are going to perform');
 ```
@@ -91,6 +92,7 @@ $I - is a magical object. It catches all actions you can perform. Just type ```$
 For instance, the Web module is connected and you can open browser on specific page and test the expected result.
 
 ``` php
+<?php
 $I = new TestGuy($scenario);
 $I->wantTo('see if registration page is here');
 $I->amOnPage('/register');
