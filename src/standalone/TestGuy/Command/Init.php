@@ -59,18 +59,18 @@ class TestGuy_Command_Init extends \Symfony\Component\Console\Command\Command {
             'app' => array(
                 'class_name' => 'TestGuy',
                 'suite_class' => 'PHPUnit_Framework_TestSuite',
-                'modules' => array('Web', 'DbPopulator'),
+                'modules' => array('Web'), #, 'DbPopulator'),
                 'bootstrap' => '~',
                 'Web' => array(
                     'start' => 'http://localhost/myapp/ # replace with url for app you want to test',
                     'log' => 'tests/log # path is used to store page snapshots'
                 ),
-                'DbPopulator' => array(
-                    'dump' => 'tests/dump/app.sql',
-                    'dsn' => '',
-                    'user' => '',
-                    'password' => ''
-                )
+//                'DbPopulator' => array(
+//                    'dump' => 'tests/dump/app.sql',
+//                    'dsn' => '',
+//                    'user' => '',
+//                    'password' => ''
+//                )
             )
         );
 

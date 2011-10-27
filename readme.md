@@ -4,62 +4,113 @@
 TestGuy is a functional testing framework powered by PHPUnit.
 Designed make tests easy to write, read, and debug.
 
-### Requirements
-PHPUnit installed
-
 ## TestGuy principles
 TestGuy library allows to write test scenarios in PHP with DSL designed to look like native English.
- 
-The main point in TestGuy philosophy is... a Test Guy! . Let's imagine it's our tester that comes to site. 
+Imagine your tester describes her actions and you write them as a functional tests!
+Tester can perform some actions and see the results. Whenever she doesn't see expected value the test fails.
+This is how testers act. And this is the same how TestGuy is acting.
 
-Test Guy performs multiple actions and sees the results.
-TestGuy can test only things observable to common users. I.e. he can't see the internal application state, he sees only the results of his actions. If the results match the expected scenario test is passed.
+TestGuy knows a little about internals of your application. When error occur it won't tell you which module triggered this error.
+Still it makes you confident that your app is still running correctly and users can perform the same scenarios the TestGuy does.
 
-### Installation (not complete)
-1. Download (or git clone) TestGuy
-2. Copy testguy.php to your project directory
-3. Edit testguy.php and set proper path to file autoload.php in the root of TestGuy dir.
-4. Execute php testguy.php console tool
+Cover your application with functional tests and let them stay simple to read, simple to write, and simple to debug.
+Use TestGuy!
 
-## Running tests
+## About
 
-{{{
-./php testguy.php run
-}}}
+TestGuy uses PHPUnit (http://http://www.phpunit.de/) as backend for testing framework. If you are familiar with PHPUnit you can your TestGuy installation with it's features.
+Also TestGuy uses Mink (http://mink.behat.org/) a powerful library that provides interface for browser emulators.
+TestGuy was developed as symfony1 plugin and now it's migrated to standalone version. You can test any project with it!
+
+## Install
+
+If you need stable standalone version download [https://github.com/downloads/DavertMik/TestGuy_Standalone/testguy.phar](phar package).
+
+Put it wherever you expect to store your test suites. Recomended to put it project root.
+
+Install TestGuy dependencies.
+````
+php testguy.phar install
+````
+
+Generate empty test suite
+````
+php testguy.phar init
+````
+That will create a 'tests' directory with a sample suite inside it.
+By default suite will be configured to test web sites and repopulate database after each run.
+
+Build TestGuy class
+````
+php testguy.phar build
+````
+
+Edit ```tests/testguy/suites.yml```` and update configuration for modules.
+Remove DbPoplator module from config if you don't need to repopulate database.
+If you remove this module you can try to run the suite:
+
+````
+php testguy.phar run
+````
+
+You will see the result:
+
+````
+Starting app...
+TestGuy 0.7 running with modules: Cli, Filesystem.
+Powered by PHPUnit 3.5.5 by Sebastian Bergmann.
 
 
-== Writing tests ==
+# Trying to test some feature of my app (SampleSpec.php) - ok
 
-- For best experience use IDE - Netbeans (free) or PHPStorm. It allows autocompletion that helps much writing tests.
-- Test scenarios are stored in /test/testguy/frontend . They are suffixed with 'Spec'. 
-- Create a new php file there and it will be automatically added to suite.
-- Add {{{ $I = new TestGuy($scenario); }}} line first
-- Write a scenario description {{{ $I->wantTo('describe what your scenario is doing'); }}} or {{{ $I->wantToTest('describe the feature you want to test'); }}}
-- Try to write "$I->" on next line and you will see a dropdown of all actual methods.
-- Write a scenario...
+Time: 0 seconds, Memory: 8.75Mb
 
+OK (1 test, 0 assertions)
+````
 
-There are 3 types of TestGuy methods: 
+## Writing tests
 
-1. conditions, starts with 'am' (for example 'amOnPage'). Are used to define the starting point of scenario.
-2. assertions, starts with 'see' (for example 'see', or 'seeInDatabase'). Are used to check results. 
-3. actions, all other methods. 
+Each test belongs to suite. You can have several suites for different parts of your application.
+By default the 'app' test suite is crated and stored into ````tests/testguy/app````.
+Inside of it you will see a first test file: ````SampleSpec.php````
 
+TestGuy tests should be placed in suite directory and should be ended with 'Spec.php'.
 
-Basic scenario should start with conditions, perform some actions and then finish with assertions.
+Tests should always start with this lines:
 
-== API ==
-Currently implemented methods 
+``` php
+$I = new TestGuy($scenario);
+$I->wantTo('actions you are going to perform');
+```
 
-- amOnPage($page) - moves browser to specified page
-- am($name) - logs in as user with $name
-- amMobilePhoneOwner($phone) - specifies that user can receive texts to $phone and send them to our numbers
+$I - is a magical object. It catches all actions you can perform. Just type ```$I->``` in your IDE and you will see what actions you can execute.
+For instance, the Web module is connected and you can open browser on specific page and test the expected result.
+``` php
+$I = new TestGuy($scenario);
+$I->wantTo('see if registration page is here');
+$I->amOnPage('/register');
+$I->see('Registration');
+```
 
-- see($text) - looks for specific text on page. Second parameter can define CSS selector in which to look.
-- seeLink()
+ALl methods of $I object are taken from TestGuy modules. There are not much of them, but you can write your own.
+The most powerful module is Web module, it allows you to test wep sites with headless browser.
+You can connect as many modules as you like and use all them together.
 
-- submitForm($selector, $params)
+The detailed information on modules and configurations you can see [https://github.com/DavertMik/TestGuy_Modules](here)
 
-- seeInDatabase($model, $params) - check if record for $model and with specified data exists in database.
+## Testing Methods
+The method names in $I object are designed to be easy to understand their meaning.
+There are 3 types of methods:
 
-....
+* Conditions: start with ```am```. They specify the starting conditions. For example: ```$I->amOnPage('/login');```
+* Assertions: start with ```see``` or ```dontSee```. They define the expected result and makes a test fail if result is not see.
+* Actions: all other actions. They change current application state. For example: ```$I->click('Signin');``` moves user to sign in page.
+
+## Sample tests
+You can look at sample tests here, in /tests/ dir.
+
+### License
+MIT
+
+(c) Michael Bodnarchuk "Davert"
+2011
