@@ -26,21 +26,25 @@ TestGuy was developed as symfony1 plugin and now it's migrated to standalone ver
 
 If you need stable standalone version download [https://github.com/downloads/DavertMik/TestGuy_Standalone/testguy.phar](phar package).
 
-Put it wherever you expect to store your test suites. Recomended to put it project root.
+Put it wherever you expect to store your test suites.
 
 Install TestGuy dependencies.
-````
+
+```
 php testguy.phar install
-````
+```
 
 Generate empty test suite
+
 ````
 php testguy.phar init
 ````
+
 That will create a 'tests' directory with a sample suite inside it.
 By default suite will be configured to test web sites and repopulate database after each run.
 
 Build TestGuy class
+
 ````
 php testguy.phar build
 ````
@@ -85,6 +89,7 @@ $I->wantTo('actions you are going to perform');
 
 $I - is a magical object. It catches all actions you can perform. Just type ```$I->``` in your IDE and you will see what actions you can execute.
 For instance, the Web module is connected and you can open browser on specific page and test the expected result.
+
 ``` php
 $I = new TestGuy($scenario);
 $I->wantTo('see if registration page is here');
